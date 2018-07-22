@@ -38,13 +38,33 @@ module.exports = function (app, database) {
         let complete = req.body.complete;
      
         database.query(
-            `UPDATE todos SET complete = ${complete} WHERE id = ${id}`,
+            `UPDATE todos SET complete = ${complete} WHERE id = ${id}`,//use the text instead the complete
             function (error, results, fields){
                 if(error) throw error;
                 console.log('results: ', results);
                 res.send(results);
             });
       });
+
+//////////////////////////////////
+
+      app.post('/edit-todo', function (req, res) {
+        let id = req.body.id;
+        let text = req.body.text;
+        database.query(
+            `UPDATE todos SET text='${text}' WHERE id = ${id};`,
+            function (error, results, fields) {
+ 
+                if (error) throw error;
+ 
+                console.log('results: ', results);
+ 
+                res.send(results)
+            });
+    });
+
+//////////////////////////////
+
 
     app.delete('/delete', function (req, res) {//*****************************************************cambie get por delete
         let id = req.body.id;
@@ -70,4 +90,17 @@ module.exports = function (app, database) {
                 res.send(results);
             });
       });;
+
+//////////////////fecha///////////////////////////////////////////////////////////////
+      app.get('/get-created', function (req, res) {
+        let id = req.body.id;
+        database.query(
+            `SELECT created FROM todos WHERE id=${id}`,
+            function (error, results, fields) {
+                if (error) throw error;
+                console.log('results', results);
+                res.send(results);
+            });
+
+    });
 }

@@ -11,17 +11,77 @@
 
 <body>
 
-    <input type="text" id="new-todo-input">
-    <button id="add-todo-btn">ADD</button>
-    <div id="todos-container"></div>
-   
-    
+
+    <div class="bodyContainer">
+
+        <div class="dropdown">
+            <button id="myBtn" class="dropbtn">Options</button>
+            <div id="myDropdown" class="dropdown-content">
+                <button id="tutorial" class="tutorial">Tutorial</button>
+                <button id="stop" class="stopx">Stop Tutorial</button>
+                <button id="style" class="style">Style</button>
+                <button id="style1" class="nule">Vertical</button>
+                <button id="style2" class="nule">Horizontal</button>
+
+            </div>
+        </div>
+
+        <div class="titulo">
+            <h1 class="to-do-list">To do List</h1>
+            <div class="agregar">
+                <input type="text" id="new-todo-input" class="inputTodo">
+                <button id="add-todo-btn" class="addTodo">ADD</button>
+            </div>
+        </div>
 
 
-    
+        <div class="element">
+
+
+
+            <div id="todos-container" class="todos"></div>
+
+
+
+
+        </div>
+
+<!-- chat de la guia -->
+
+        <div class="guiachat">    
+            <div class="paragraphx" id="paragraph">
+                    <p>
+                        <br>
+                        Welcome, I will be your guide:<br>
+                        To add a task write the text<br>
+                        in the space above and click "add"<br>
+                        If you want to edit the text press "edit"<br>
+                        There is a small box where you can mark <br>
+                        if the task is already completed and finally<br>
+                        you can delete the task by clicking "delete".
+                    </p>
+
+            </div>
+            <img src="./img/chat.png" class="imgx" id="img">
+        </div>
+
+        <div class="image" id="image">
+
+
+
+            <div class="guia1" id="guia1">
+                <img src="./img/guia1.gif">
+            </div>
+
+
+        </div>
+    </div>
+
+
 
 
     <script src="/main.js"></script>
+    <script src="/animacion.js"></script>
 </body>
 
 </html>

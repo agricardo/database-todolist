@@ -57,45 +57,30 @@ window.onload = function () {
                     credentials: "include",
                     body: JSON.stringify({
                         id: todo.id,
-                        complete: checkbox.checked
+                        complete: checkbox.checked,
+                        completed_date: todo.completed_date
+                        
                     })
                 })
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
+                    dateSection.innerHTML = todo.completed_date;
+                
                 })
                 .catch(error => console.log(error));
         }
 //////////////////////////////////////////////////////////////////////////////////////////////
-// let dateSection = document.createElement('div');
-// dateSection.id = todo.id;
-// dateSection.classList.add('dateSection');
-
-// checkbox.onchange = function (e) {
-
-//     if(checkbox.checked){
-
-//     fetch('/get-created', {
-//             method: 'POST',
-//             headers: {
-//                 'Acept': 'application/json',
-//                 'Content-Type': 'application/json',
-//             },
-//             credentials: "include",
-//             body: JSON.stringify({
-//                 id: todo.id,
-//                 text: dateSection,
-//             })
-//         })
-//         .then(response => response.json())
-//         .then(response => {
-//             console.log(response);
-//             // text.innerHTML = stuff;
-//         })
-//         .catch(error => console.log(error));
-//     }
-// }
-
+let dateSection = document.createElement('span');
+dateSection.type = Date;
+dateSection.id = todo.id;
+dateSection.classList.add('dateSection');
+if(todo.complete > 0){
+     dateSection.textContent = todo.completed_date;
+    
+}else{
+    dateSection.textContent = '';
+}
 
 
 
@@ -165,7 +150,7 @@ window.onload = function () {
         }
 
         //************************************************ */
-        // checksection.appendChild(dateSection);
+        checksection.appendChild(dateSection);
         checksection.appendChild(checkbox);
         container.appendChild(checksection);
         container.appendChild(text);

@@ -36,13 +36,18 @@ module.exports = function (app, database) {
         console.log('|');
         let id = req.body.id;
         let complete = req.body.complete;
+        let completed_date = complete ? moment().format('YYYY-MM-DD') : null;
      
         database.query(
-            `UPDATE todos SET complete = ${complete} WHERE id = ${id}`,//use the text instead the complete
+            `UPDATE todos SET complete = ${complete}, completed_date = '${completed_date}' WHERE id = ${id}`,//use the text instead the complete
             function (error, results, fields){
                 if(error) throw error;
                 console.log('results: ', results);
-                res.send(results);
+                res.send({
+                    ...results,
+                    completed_date: completed_date
+
+                });
             });
       });
 
